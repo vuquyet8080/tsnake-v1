@@ -19,7 +19,7 @@ export default function SignInButton({ botUsername }: { botUsername: string }) {
 	const { data: session, status } = useSession();
 
 	if (status === "loading") {
-		return <ReloadIcon className="h-6 w-6 animate-spin" />;
+		return <ReloadIcon className="w-6 h-6 animate-spin" />;
 	}
 
 	if (status === "authenticated") {
@@ -45,7 +45,7 @@ export default function SignInButton({ botUsername }: { botUsername: string }) {
 					<DropdownMenuItem disabled>Test 2</DropdownMenuItem>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem onClick={() => signOut()}>
-						<ExitIcon className="mr-2 h-4 w-4" />
+						<ExitIcon className="w-4 h-4 mr-2" />
 						Sign out
 					</DropdownMenuItem>
 				</DropdownMenuContent>
@@ -57,6 +57,7 @@ export default function SignInButton({ botUsername }: { botUsername: string }) {
 		<LoginButton
 			botUsername={botUsername}
 			onAuthCallback={(data) => {
+				console.log("data", data);
 				signIn("telegram-login", { callbackUrl: "/" }, data as any);
 			}}
 		/>

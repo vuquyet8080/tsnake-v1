@@ -1,32 +1,54 @@
 "use client";
 
 // import { onActionAuthButton, onActionButton } from "@/helper/actionButton";
-import { onActionAuthButton, onActionButton } from "../../helper/actionButton";
 import {
 	Accordion,
 	AccordionBody,
 	AccordionHeader,
+	Dialog,
+	DialogBody,
+	DialogHeader,
 } from "@material-tailwind/react";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import React from "react";
-import TaskButton from "../button/TaskButton";
+import { LoginButton } from "@telegram-auth/react";
 import { isEmpty } from "lodash";
+import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
+import React, { useState } from "react";
+import { onActionAuthButton, onActionButton } from "../../helper/actionButton";
+import TaskButton from "../button/TaskButton";
 
 export default function TaskQuests({ quest }) {
+	const [isShowModal, setShowModal] = useState(false);
+
+	const handleOpen = () => setShowModal(!isShowModal);
+
 	const [openAcc1, setOpenAcc1] = React.useState(false);
 	const handleOpenAcc1 = () => setOpenAcc1((cur) => !cur);
 	const { data: session } = useSession();
+	console.log("session", session);
 
 	const handleClickHead = () => {
 		if (isEmpty(session?.token) && quest?.type === "twitter") {
-			return onActionAuthButton({
-				auth: session?.toke,
-				type: quest?.type,
-			});
+			setShowModal(true);
+			// return onActionAuthButton({
+			// 	auth: session?.toke,
+			// 	type: quest?.type,
+			// });
+		}
+		if (isEmpty(session?.token) && quest?.type === "telegram") {
+			setShowModal(true);
 		}
 		handleOpenAcc1();
 	};
+
+	const handleLoginWithPlatform = () => {
+		onActionAuthButton({
+			auth: session?.toke,
+			type: quest?.type,
+		});
+		setShowModal(false);
+	};
+
 	return (
 		<Accordion
 			open={openAcc1 && session?.token?.provider === quest?.type}
@@ -68,9 +90,40 @@ export default function TaskQuests({ quest }) {
 				<TaskButton
 					variant="outlined"
 					title={"Verify"}
-					action={() => {}}
+					onClick={() => {}}
 				/>
 			</AccordionBody>
+			<Dialog size="sm" open={isShowModal} handler={handleOpen}>
+				<DialogHeader>Kết nối với tài khoản của bạn</DialogHeader>
+				<DialogBody>
+					Tài khoản {quest?.type} của bạn chưa được đăng nhập, vui
+					lòng đăng nhập!
+				</DialogBody>
+				<div className="flex items-center justify-center w-full pb-6">
+					{["twitter"].includes(quest?.type) && (
+						<TaskButton
+							color="black"
+							icon={quest.type}
+							// variant="outlined"
+							title={`Đăng nhập với ${quest?.type}`}
+							onClick={handleLoginWithPlatform}
+						/>
+					)}
+					{quest?.type === "telegram" && (
+						<LoginButton
+							botUsername={"Tsnake_fun_bot"}
+							onAuthCallback={(data) => {
+								console.log("data", data);
+								setShowModal(false);
+
+								// signIn("telegram-login", {
+								// 	redirect: false,
+								// });
+							}}
+						/>
+					)}
+				</div>
+			</Dialog>
 		</Accordion>
 	);
 }
