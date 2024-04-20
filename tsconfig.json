@@ -30,7 +30,9 @@
 		".next/types/**/*.ts",
 		"process.d.ts",
 		"next-env.d.ts",
-		"next-auth.d.ts"
+		"next-auth.d.ts",
+		"app/quests/[slug]/page.jsx",
+		"components/button/TaskButton.jsx"
 	],
 	"exclude": ["node_modules"]
 }

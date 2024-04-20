@@ -1,12 +1,7 @@
 "use client";
 
-import * as React from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { type ThemeProviderProps } from "next-themes/dist/types";
+import { ThemeProvider } from "@material-tailwind/react";
 
-export default function ThemeProvider({
-  children,
-  ...props
-}: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+export default function ThemeProviderWrap({ children }: any) {
+	return <ThemeProvider>{children}</ThemeProvider>;
 }
