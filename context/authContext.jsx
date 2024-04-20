@@ -18,6 +18,7 @@ const AuthContextProvider = ({ children }) => {
 	useEffect(() => {
 		setSocialAuth(JSON.parse(localStorage.getItem("socialAuth")));
 	}, []);
+	console.log("socialAuth>>", socialAuth);
 	return (
 		<AuthContext.Provider value={{ updateDataSocial, socialAuth }}>
 			{children}

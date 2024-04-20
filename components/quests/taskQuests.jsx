@@ -25,7 +25,6 @@ export default function TaskQuests({ quest }) {
 	const [openAcc1, setOpenAcc1] = React.useState(false);
 	const handleOpenAcc1 = () => setOpenAcc1((cur) => !cur);
 	const { data: session } = useSession();
-
 	const isTwitterLogin =
 		session?.token?.provider === "twitter" || !isEmpty(socialAuth?.twitter);
 	const isTelegramLogin = !isEmpty(socialAuth?.telegram);
