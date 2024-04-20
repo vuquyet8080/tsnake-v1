@@ -8,12 +8,10 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ExitIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { LoginButton } from "@telegram-auth/react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { ReloadIcon, ExitIcon } from "@radix-ui/react-icons";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function SignInButton({ botUsername }: { botUsername: string }) {
 	const { data: session, status } = useSession();
@@ -26,17 +24,7 @@ export default function SignInButton({ botUsername }: { botUsername: string }) {
 		return (
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<div>
-						<Avatar>
-							<AvatarImage
-								src={session.user?.image ?? "/default.webp"}
-								alt="@shadcn"
-							/>
-							<AvatarFallback>
-								{session.user?.name}
-							</AvatarFallback>
-						</Avatar>
-					</div>
+					<div></div>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align="end" className="w-56">
 					<DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
