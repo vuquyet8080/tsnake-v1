@@ -7,44 +7,6 @@ export const authOptions = {
 			clientId: "kGRf2bwqTfpUDSx6bExHRuTz4",
 			clientSecret: "zVumVPn3t7TNkZjvOFUv1Txc1DjtQLN01lYkZiHsdtEWSMd0XQ",
 		}),
-
-		// CredentialsProvider({
-		// 	id: "telegram-login",
-		// 	name: "Telegram Login",
-		// 	credentials: {},
-		// 	async authorize(credentials, req) {
-		// 		console.log("credentials", credentials)
-		// 		console.log("req",req)
-		// 		const validator = new AuthDataValidator({
-		// 			botToken: `${process.env.BOT_TOKEN}`,
-		// 		});
-
-		// 		const data = objectToAuthDataMap(req.query || {});
-		// 		console.log("data",data)
-		// 		const user = await validator.validate(data);
-		// 		console.log("user",)
-
-		// 		if (user.id && user.first_name) {
-		// 			const returned = {
-		// 				id: user.id.toString(),
-		// 				email: user.id.toString(),
-		// 				name: [user.first_name, user.last_name || ""].join(" "),
-		// 				image: user.photo_url,
-		// 			};
-
-		// 			try {
-		// 				await createUserOrUpdate(user);
-		// 			} catch {
-		// 				console.log(
-		// 					"Something went wrong while creating the user."
-		// 				);
-		// 			}
-
-		// 			return returned;
-		// 		}
-		// 		return null;
-		// 	},
-		// }),
 	],
 	secret: process.env.PUBLIC_SECRET,
 	callbacks: {

@@ -11,32 +11,31 @@ import {
 } from "@material-tailwind/react";
 import { LoginButton } from "@telegram-auth/react";
 import { isEmpty } from "lodash";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/authContext";
 import { onActionAuthButton, onActionButton } from "../../helper/actionButton";
 import TaskButton from "../button/TaskButton";
-
 export default function TaskQuests({ quest }) {
 	const [isShowModal, setShowModal] = useState(false);
 
 	const handleOpen = () => setShowModal(!isShowModal);
-
+	const { updateDataSocial, socialAuth } = useContext(AuthContext);
 	const [openAcc1, setOpenAcc1] = React.useState(false);
 	const handleOpenAcc1 = () => setOpenAcc1((cur) => !cur);
 	const { data: session } = useSession();
-	console.log("session", session);
+
+	const isTwitterLogin =
+		session?.token?.provider === "twitter" || !isEmpty(socialAuth?.twitter);
+	const isTelegramLogin = !isEmpty(socialAuth?.telegram);
 
 	const handleClickHead = () => {
-		if (isEmpty(session?.token) && quest?.type === "twitter") {
-			setShowModal(true);
-			// return onActionAuthButton({
-			// 	auth: session?.toke,
-			// 	type: quest?.type,
-			// });
+		if (!isTwitterLogin && quest?.type === "twitter") {
+			return setShowModal(true);
 		}
-		if (isEmpty(session?.token) && quest?.type === "telegram") {
-			setShowModal(true);
+		if (!isTelegramLogin && quest?.type === "telegram") {
+			return setShowModal(true);
 		}
 		handleOpenAcc1();
 	};
@@ -115,6 +114,7 @@ export default function TaskQuests({ quest }) {
 							onAuthCallback={(data) => {
 								console.log("data", data);
 								setShowModal(false);
+								updateDataSocial("telegram", data);
 
 								// signIn("telegram-login", {
 								// 	redirect: false,
