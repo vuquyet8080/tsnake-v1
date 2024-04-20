@@ -103,15 +103,15 @@ Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK
     },
     {
       type: "telegram",
-      title: "Join @Meta_Earth_Community group on Telegram",
+      title: "Join @Test group  on Telegram",
       id: "1711274503538",
-      targetActionId: "https://t.me/Meta_Earth_Community",
+      targetActionId: "https://t.me/+UC3g3IebidY1ZDNl",
       action: "join-group",
       label: "Join Group",
     },
     {
       type: "telegram",
-      title: "Join @Meta_BNB chanel on Telegram",
+      title: "Join @Tets chanel  on Telegram",
       id: "1711274503538",
       targetActionId: "https://t.me/+UVmkYyP9xuRhMGU1",
       action: "join-chanel",
