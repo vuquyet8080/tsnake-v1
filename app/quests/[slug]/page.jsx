@@ -5,42 +5,43 @@ import { ClipboardDefault } from "@/components/ClipboardDefault";
 import TaskQuests from "@/components/quests/taskQuests";
 
 export default function index() {
-	return (
-		<div className="py-8">
-			<div className="flex flex-row items-center justify-between w-full ">
-				<div className="text-lg font-semibold md:text-xl lg:text-2xl ">
-					{mockDataQuest.title || ""}
-				</div>
+  return (
+    <div className="py-8">
+      <div className="flex flex-row items-center justify-between w-full ">
+        <div className="text-lg font-semibold md:text-xl lg:text-2xl ">
+          {mockDataQuest.title || ""}
+        </div>
 
-				<ClipboardDefault />
-			</div>
-			<div className="flex flex-col pt-6 gap-y-4">
-				{mockDataQuest?.tasks?.map((quest) => {
-					return <TaskQuests quest={quest} key={quest.id} />;
-				})}
-			</div>
-			<div className="pt-12">
-				<div className="text-2xl font-semibold">Description</div>
+        <ClipboardDefault />
+      </div>
+      <div className="flex flex-col pt-6 gap-y-4">
+        {mockDataQuest?.tasks?.map((quest) => {
+          return <TaskQuests quest={quest} key={quest.id} />;
+        })}
+      </div>
+      <div className="pt-12">
+        <div className="text-2xl font-semibold">Description</div>
 
-				<div className="pt-2">
-					<p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-						{mockDataQuest.description || ""}
-					</p>
-				</div>
-			</div>
-			<div className="pt-10">
-				<CarouselList />
-			</div>
-		</div>
-	);
+        <div className="pt-2">
+          <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+            {mockDataQuest.description || ""}
+          </p>
+        </div>
+      </div>
+      <div className="pt-10">
+        <CarouselList />
+      </div>
+    </div>
+  );
 }
 
 const mockDataQuest = {
-	avatar: "https://s3.ap-northeast-1.amazonaws.com/quest3.xyz/community/894066191681466636.png",
-	title: "Blow up with $BUBBLE coin from @ImaginaryOnes!",
-	status: "Draft",
-	createAt: "4/16/2024 - 12:12",
-	description: `Disclaimer : Previously we wanted to provide an explanation of why we use BSC on QuestN, because QuestN is not available for SEI Network, therefore we use BSC on QuestN
+  avatar:
+    "https://s3.ap-northeast-1.amazonaws.com/quest3.xyz/community/894066191681466636.png",
+  title: "Blow up with $BUBBLE coin from @ImaginaryOnes!",
+  status: "Draft",
+  createAt: "4/16/2024 - 12:12",
+  description: `Disclaimer : Previously we wanted to provide an explanation of why we use BSC on QuestN, because QuestN is not available for SEI Network, therefore we use BSC on QuestN
 
 Introduction :
      PepeBorn is more than just a NFT and Token project, we offer many benefits and advantages in this project, our NFTs and Tokens are fully functional and have many usecases that we can offer, such as Whitelist, Airdrop, Staking and Earning PBT and SEI Tokens, Voting (DAO), Lottery Draw and etc.
@@ -59,47 +60,62 @@ We will give away 50 free NFTs to 50 random winners. NFTs will be tradeable on t
 Airdrop :
 We will provide 5% supply (50M PBT) of our tokens to NFT holders, as soon as we launch our tokens on the market. To get our airdrop you need to have an NFT of ours in your wallet, and we will take a snapshot for that, each of your NFTs in the wallet will have a portion, so there is no need to worry if you have more than 1 NFT in your wallet, because we give airdrop tokens for each NFT or per NFT, not per wallet.
 Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK HERE`,
-	tasks: [
-		{
-			type: "twitter",
-			title: "Follow @_MetaEarth_ on X",
-			id: "171327450sd3338",
-			targetActionId: "macarondex",
-			action: "follow",
-		},
-		{
-			type: "twitter",
-			title: "Like a Post by @/_MetaEarth_ on X",
-			id: "171274503538",
-			targetActionId: "1764599241077346714",
-			action: "like",
-		},
-		{
-			type: "twitter",
-			title: "Post on X and tag 3 friends on X",
-
-			targetActionId: `https://twitter.com/intent/post?text=https%3A%2F%2Fx.com%2F_MetaEarth_%2Fstatus%2F1764599241077346714%3Fs%3D20%0A%0A%23Modular%20Meta%20Earth%20Network%20with%20native%20%23DID%20is%20coming%2C%20LFG%20%23Coldstart2024%0A%0A%23MetaEarth%20%23Modular%20%23Coldstart2024`,
-			id: "171327450538",
-			action: "post&tag",
-		},
-		{
-			type: "twitter",
-			title: "Retweet a post  by @/_MetaEarth_ on X",
-			id: "17274503538",
-			targetActionId: "1764599241077346714",
-			action: "retweet",
-		},
-		{
-			type: "facebook",
-			title: "Like a Post by @/_MetaEarth_ on FACEBOOK",
-			id: "1713274503338",
-			action: "like",
-		},
-		{
-			type: "telegram",
-			title: "Like a Post by @/_MetaEarth_ on TELEGRAM",
-			id: "1711274503538",
-			action: "like",
-		},
-	],
+  tasks: [
+    {
+      type: "twitter",
+      title: "Follow @_MetaEarth_ on X",
+      id: "171327450sd3338",
+      targetActionId: "macarondex",
+      action: "follow",
+      label: "Follow",
+    },
+    {
+      type: "twitter",
+      title: "Like a Post by @/_MetaEarth_ on X",
+      id: "171274503538",
+      targetActionId: "1764599241077346714",
+      action: "like",
+      label: "Like",
+    },
+    {
+      type: "twitter",
+      title: "Post on X and tag 3 friends on X",
+      id: "171327450538",
+      targetActionId: `https://twitter.com/intent/post?text=https%3A%2F%2Fx.com%2F_MetaEarth_%2Fstatus%2F1764599241077346714%3Fs%3D20%0A%0A%23Modular%20Meta%20Earth%20Network%20with%20native%20%23DID%20is%20coming%2C%20LFG%20%23Coldstart2024%0A%0A%23MetaEarth%20%23Modular%20%23Coldstart2024`,
+      action: "post&tag",
+      label: "Post & Tag",
+    },
+    {
+      type: "twitter",
+      title: "Retweet a post  by @/_MetaEarth_ on X",
+      id: "17274503538",
+      targetActionId: "1764599241077346714",
+      action: "retweet",
+      label: "Retweet",
+    },
+    {
+      type: "facebook",
+      title: "Like a Post by @/_MetaEarth_ on FACEBOOK",
+      id: "1713274503338",
+      targetActionId: "",
+      action: "like",
+      label: "Like",
+    },
+    {
+      type: "telegram",
+      title: "Join @Meta_Earth_Community group on Telegram",
+      id: "1711274503538",
+      targetActionId: "https://t.me/Meta_Earth_Community",
+      action: "join-group",
+      label: "Join Group",
+    },
+    {
+      type: "telegram",
+      title: "Join @Meta_BNB chanel on Telegram",
+      id: "1711274503538",
+      targetActionId: "https://t.me/+UVmkYyP9xuRhMGU1",
+      action: "join-chanel",
+      label: "Join Chanel",
+    },
+  ],
 };

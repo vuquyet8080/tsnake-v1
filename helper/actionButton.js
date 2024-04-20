@@ -3,7 +3,7 @@ import { isEmpty } from "lodash";
 import { popupCenter } from "./popupCenter";
 
 export const onActionButton = async ({ type, action, data, auth }) => {
-  if (isEmpty(auth) && type === "twitter") {
+  if (!auth && type === "twitter") {
     return popupCenter("/login/twitter", "Sample Sign In");
   }
 
@@ -11,28 +11,44 @@ export const onActionButton = async ({ type, action, data, auth }) => {
     // provider;
     return window.open(
       `https://twitter.com/intent/follow?screen_name=${data?.targetActionId}`,
-      // "twitter",
+      //   "twitter",
       "",
-      "width = 700, height = 700",
+      "width = 700, height = 700"
     );
   }
   if (type === "twitter" && action === ACTION.twitter.like) {
     return window.open(
       `https://twitter.com/intent/like?tweet_id=${data?.targetActionId}`,
-      // "twitter",
+      //   "twitter",
       "",
-      "width = 700, height = 700",
+      "width = 700, height = 700"
     );
   }
   if (type === "twitter" && action === ACTION.twitter["post&tag"]) {
     return window.open(
       `${data?.targetActionId}`,
-      // "twitter",
+      //   "twitter",
       "",
-      "width = 700, height = 700",
+      "width = 700, height = 700"
     );
   }
   if (type === "twitter" && action === ACTION.twitter.retweet) {
+  }
+  if (type === "telegram" && action === ACTION.telegram.joinGroup) {
+    return window.open(
+      `${data?.targetActionId}`,
+      //   "telegram",
+      "",
+      "width = 700, height = 700"
+    );
+  }
+  if (type === "telegram" && action === ACTION.telegram.joinChanel) {
+    return window.open(
+      `${data?.targetActionId}`,
+      //   "telegram",
+      "",
+      "width = 700, height = 700"
+    );
   }
 };
 
