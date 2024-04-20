@@ -8,7 +8,7 @@ export default function index() {
   return (
     <div className="py-8">
       <div className="flex flex-row items-center justify-between w-full ">
-        <div className="text-lg font-semibold md:text-xl lg:text-2xl ">
+        <div className="font-semibold text-md md:text-xl lg:text-2xl ">
           {mockDataQuest.title || ""}
         </div>
 
@@ -28,7 +28,7 @@ export default function index() {
           </p>
         </div>
       </div>
-      <div className="pt-10">
+      <div className="pt-4 md:pt-10 ">
         <CarouselList />
       </div>
     </div>
@@ -95,7 +95,7 @@ Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK
     },
     {
       type: "facebook",
-      title: "Like a Post by @/_MetaEarth_ on FACEBOOK",
+      title: "Like a Post by @/_MetaEarth_ on Facebook",
       id: "1713274503338",
       targetActionId: "",
       action: "like",

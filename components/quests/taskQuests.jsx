@@ -66,7 +66,7 @@ export default function TaskQuests({ quest }) {
         className="px-0 py-0 m-0 border-none"
       >
         <div className="flex flex-row items-center w-full px-4 py-2 border rounded-md shadow-md gap-x-2 hover:cursor-pointer active:bg-gray-50">
-          <div className="relative w-6 h-6">
+          <div className="relative w-6 h-6 min-w-6 min-h-6">
             <Image
               src={`/images/${quest.type}.svg`}
               layout="fill"
