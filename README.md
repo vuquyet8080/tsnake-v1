@@ -42,3 +42,4 @@ Follow these steps to get started with the Telegram authentication example:
 Remember to replace placeholders and follow the instructions in the example to set up Telegram authentication for your Next.js application. This example combines the power of NextAuth.js, PrismaJS, Tailwind CSS, and ShadcnUI to create a seamless authentication experience using Telegram.
 
 ![Telegram Authentication Flow](https://i.ibb.co/h1sdVcG/Capture11.jpg)
+# tsnake-v1
