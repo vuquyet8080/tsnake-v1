@@ -20,9 +20,9 @@ export function ClipboardDefault({ link = "https://tsnake.vercel.app/" }) {
         >
           <div className="flex flex-row items-center justify-center gap-x-1">
             {copied ? (
-              <CheckIcon className="w-5 h-5 text-white" />
+              <CheckIcon className="w-5 h-5 text-white min-w-5 min-h-5" />
             ) : (
-              <DocumentDuplicateIcon className="w-5 h-5 text-white" />
+              <DocumentDuplicateIcon className="w-5 h-5 text-white min-w-5 min-h-5" />
             )}
             <div className="ml-2 text-[10px] font-semibold md:text-md min-w-max">
               Copy link
